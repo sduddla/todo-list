@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodoEditor from './TodoEditor';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
@@ -10,7 +10,11 @@ export type TodoType = {
 };
 
 export default function Todo() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>(() => {
+    // 불러오기
+    const saved = sessionStorage.getItem('todos');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   // 등록
   const addTodo = (text: string) => {
@@ -35,6 +39,11 @@ export default function Todo() {
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+
+  // 저장
+  useEffect(() => {
+    sessionStorage.setItem('todos', JSON.stringify(todos));
+  });
 
   return (
     <>
