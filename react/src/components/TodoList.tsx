@@ -1,9 +1,12 @@
+import type { TodoType } from './Todo';
 import TodoListItem from './TodoListItem';
 
-export default function TodoList() {
+export default function TodoList({ todos }: { todos: TodoType[] }) {
   return (
     <>
-      <TodoListItem />
+      {todos.map((todo) => (
+        <TodoListItem key={todo.id} todo={todo} />
+      ))}
     </>
   );
 }
