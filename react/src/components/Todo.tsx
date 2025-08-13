@@ -32,11 +32,16 @@ export default function Todo() {
     );
   };
 
+  // 할 일 삭제
+  const deleteTodo = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <>
       <TodoHeader />
       <TodoEditor addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
   );
 }

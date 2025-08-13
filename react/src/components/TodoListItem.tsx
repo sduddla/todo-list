@@ -4,9 +4,11 @@ import type { TodoType } from './Todo';
 export default function TodoListItem({
   todo,
   toggleTodo,
+  deleteTodo,
 }: {
   todo: TodoType;
   toggleTodo: (id: number) => void;
+  deleteTodo: (id: number) => void;
 }) {
   return (
     <>
@@ -28,7 +30,10 @@ export default function TodoListItem({
             {todo.text}
           </span>
         </div>
-        <button className='relative flex items-center justify-center cursor-pointer group'>
+        <button
+          className='relative flex items-center justify-center cursor-pointer group'
+          onClick={() => deleteTodo(todo.id)}
+        >
           <div className='absolute w-8 h-8 rounded-md transition-colors duration-200 group-hover:bg-gray-100'></div>
           <X className='w-5 h-5 text-gray-400 relative' />
         </button>
