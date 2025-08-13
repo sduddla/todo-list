@@ -23,11 +23,20 @@ export default function Todo() {
     setTodos([...todos, newTodo]);
   };
 
+  // 할 일 완료 여부 토글
+  const toggleTodo = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
   return (
     <>
       <TodoHeader />
       <TodoEditor addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />
     </>
   );
 }
