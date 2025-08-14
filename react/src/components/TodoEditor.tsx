@@ -19,7 +19,7 @@ export default function TodoEditor({
   };
 
   return (
-    <form className='flex p-6' onSubmit={handleSubmit}>
+    <form className='flex p-6 pb-0 mb-6' onSubmit={handleSubmit}>
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}

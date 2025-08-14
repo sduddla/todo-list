@@ -32,23 +32,27 @@ export default function TodoListItem({
   };
   return (
     <>
-      <li className='flex items-center justify-between pl-6 pr-6 pt-6 pb-3 last:pb-6'>
-        <div className='flex items-cener'>
-          <label className='flex items-center cursor-pointer'>
-            <input
-              type='checkbox'
-              className='hidden peer'
-              onChange={() => toggleTodo(todo.id)}
-            />
-            <span className='relative w-5 h-5 rounded-full border border-[#1A82A6] mr-4 transition-colors duration-200 peer-checked:bg-[#1A82A6] flex items-center justify-center peer-checked:before:content-["✓"] peer-checked:before:text-white'></span>
-          </label>
+      <li className='flex items-center justify-between p-6 pb-0 pt-8 first:mt-4 first:pt-0 last:mb-10'>
+        <label className='flex items-center cursor-pointer'>
+          <input
+            type='checkbox'
+            className='hidden peer'
+            onChange={() => toggleTodo(todo.id)}
+          />
+          <span className='relative w-5 h-5 rounded-full border border-[#1A82A6] mr-4 transition-colors duration-200 peer-checked:bg-[#1A82A6] flex items-center justify-center peer-checked:before:content-["✓"] peer-checked:before:text-white'></span>
+        </label>
 
+        <div
+          className={`flex-1 min-w-0 ${
+            isModify ? 'border-b border-[#1A82A6]' : ''
+          }`}
+        >
           {isModify ? (
             <input
               type='text'
               value={modifyText}
               onChange={(e) => setModifyText(e.target.value)}
-              className='focus:outline-none border-b border-[#1A82A6]'
+              className='focus:outline-none w-full'
               ref={inputRef}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') modifyHandler();
@@ -65,7 +69,8 @@ export default function TodoListItem({
             </span>
           )}
         </div>
-        <div className='flex gap-3'>
+
+        <div className='flex gap-3 shrink-0 ml-5'>
           <button
             className='relative flex items-center justify-center group cursor-pointer'
             onClick={modifyHandler}
