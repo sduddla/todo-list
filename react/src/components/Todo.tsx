@@ -46,12 +46,14 @@ export default function Todo() {
     <>
       <TodoHeader />
       <TodoEditor addTodo={addTodo} />
-      <TodoList
-        todos={todos}
-        toggleTodo={toggleTodo}
-        deleteTodo={deleteTodo}
-        modifyTodo={modifyTodo}
-      />
+      <div className='overflow-y-auto'>
+        <TodoList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+          modifyTodo={modifyTodo}
+        />
+      </div>
     </>
   );
 }

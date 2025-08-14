@@ -32,8 +32,8 @@ export default function TodoListItem({
   };
   return (
     <>
-      <li className='flex items-center justify-between pl-6 pr-6 pt-6 pb-2'>
-        <div className='flex items-center'>
+      <li className='flex items-center justify-between pl-6 pr-6 pt-6 pb-3 last:pb-6'>
+        <div className='flex items-cener'>
           <label className='flex items-center cursor-pointer'>
             <input
               type='checkbox'
