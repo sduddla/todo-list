@@ -37,11 +37,21 @@ export default function Todo() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // 할 일 수정
+  const modifyTodo = (id: number, text: string) => {
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
+  };
+
   return (
     <>
       <TodoHeader />
       <TodoEditor addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoList
+        todos={todos}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+        modifyTodo={modifyTodo}
+      />
     </>
   );
 }
