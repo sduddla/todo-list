@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodoEditor from './TodoEditor';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
@@ -10,7 +10,16 @@ export type TodoType = {
 };
 
 export default function Todo() {
-  const [todos, setTodos] = useState<TodoType[]>([]);
+  const [todos, setTodos] = useState<TodoType[]>(() => {
+    // 불러오기
+    const saved = localStorage.getItem('todos');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // 저장
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  });
 
   // 할 일 등록
   const addTodo = (text: string) => {
