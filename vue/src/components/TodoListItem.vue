@@ -26,9 +26,11 @@ const handleDelete = () => {
         @change="handleToggle"
         :checked="props.todo.done"
       />
-      <span :class="{ 'line-through text-gray-400': props.todo.done }">{{ props.todo.text }}</span>
+      <span :class="{ 'line-through text-gray-400': props.todo.done }" class="max-w-[85%]">{{
+        props.todo.text
+      }}</span>
     </div>
-    <button class="text-red-500 cursor-pointer hover:text-red-600" @click="handleDelete">
+    <button class="text-red-500 cursor-pointer hover:text-red-600 shrink-0" @click="handleDelete">
       Delete
     </button>
   </li>
