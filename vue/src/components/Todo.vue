@@ -6,6 +6,8 @@ import TodoList from './TodoList.vue'
 <template>
   <TodoHeader />
   <TodoEditor />
-  <TodoList />
+  <div class="overflow-y-auto">
+    <TodoList />
+  </div>
 </template>
 <style scoped></style>
