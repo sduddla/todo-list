@@ -1,5 +1,5 @@
 import { Pencil, X } from 'lucide-react';
-import type { TodoType } from './Todo';
+import type { TodoType } from '../types/todo';
 import { useEffect, useRef, useState } from 'react';
 
 export default function TodoListItem({

@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import TodoEditor from './TodoEditor';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
-
-export type TodoType = {
-  id: number;
-  text: string;
-  completed: boolean;
-};
+import type { TodoType } from '../types/todo';
 
 export default function Todo() {
   const [todos, setTodos] = useState<TodoType[]>(() => {
