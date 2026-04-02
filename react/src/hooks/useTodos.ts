@@ -11,7 +11,7 @@ export default function useTodos() {
   // 저장
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
-  });
+  }, [todos]);
 
   // 할 일 등록
   const addTodo = (text: string) => {
