@@ -10,6 +10,8 @@ export const useTodoStore = defineStore('todo', () => {
   const todos = ref(loadTodos())
 
   const addTodo = (text) => {
+    if (!text.trim()) return;
+    
     todos.value.push({
       id: Date.now(),
       text,
