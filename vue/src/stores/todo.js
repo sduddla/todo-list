@@ -1,8 +1,13 @@
 import { defineStore } from 'pinia'
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
+
+const loadTodos = () => {
+  const saved = sessionStorage.getItem('todos')
+  return saved ? JSON.parse(saved) : []
+}
 
 export const useTodoStore = defineStore('todo', () => {
-  const todos = ref([])
+  const todos = ref(loadTodos())
 
   const addTodo = (text) => {
     todos.value.push({
@@ -28,15 +33,6 @@ export const useTodoStore = defineStore('todo', () => {
     },
     { deep: true },
   )
-
-  // 복원
-  onMounted(() => {
-    const saved = sessionStorage.getItem('todos')
-
-    if (saved) {
-      todos.value = JSON.parse(saved)
-    }
-  })
 
   return {
     todos,
